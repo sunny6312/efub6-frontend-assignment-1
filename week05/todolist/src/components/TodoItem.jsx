@@ -53,7 +53,10 @@ const Text = styled.div`
   `}
 `;
 
-function TodoItem({ id, done, text, onRemove, onToggle }) {
+// React.memo로 컴포넌트를 감쌉니다.
+const TodoItem = React.memo(({ id, done, text, onRemove, onToggle }) => {
+  console.log(`TodoItem 리렌더링: ${text}`); // 확인용 로그
+
   return (
     <TodoItemBlock>
       {/* 힌트 1: CheckCircle 클릭 시 onToggle(id) 호출, done 상태 전달 */}
@@ -70,6 +73,6 @@ function TodoItem({ id, done, text, onRemove, onToggle }) {
       </Remove>
     </TodoItemBlock>
   );
-}
+});
 
 export default TodoItem;
